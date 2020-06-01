@@ -1,6 +1,3 @@
-// Autor : Paulo Antonio Cerávolo Rodrigues
-// Abril de 2020
-
 // Exercício 2
 // Faça um programa que cadastre o nome e o salário de 10 funcionários. Use o algoritmo
 // de ordenação Selection Sort para listar todos os dados dos funcionários das seguintes

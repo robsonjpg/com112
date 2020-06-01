@@ -44,7 +44,7 @@ void escreve_dado(int *dados, int qtd, int aux){
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------
-void escreve_relatorio(int *dados, int qtd, int *mov, int *comp){
+void escreve_relatorio(int *dados, int *vetC, int qtd, int *mov, int *comp){
   //NO RELATÓRIO O BUBBLE SORT E INSERTION SORT ESTÃO SAINDO COM AS MOVIMENTAÇÕES ERRADAS, CONCERTO EM ANÁLISE!!!  
   FILE *file;
   float tmp;
@@ -68,6 +68,12 @@ void escreve_relatorio(int *dados, int qtd, int *mov, int *comp){
   fprintf(file, "\t\tTEMPO DE EXECUÇÃO: %f\n\t\tNUMEROS DE COMPARACOES FEITAS: %d\n\t\tNUMEROS DE MOVIMENTAÇÕES FEITAS %d", tmp, *comp, *mov);
   fprintf(file, "\n\n");
   fclose(file);
+  printf("\nMetodo Selection Sort\n");
+  printf("\t\tTEMPO DE EXECUÇÃO: %f\n\t\tNUMEROS DE COMPARACOES FEITAS: %d\n\t\tNUMEROS DE MOVIMENTAÇÕES FEITAS %d\n\n", tmp, *comp, *mov);
+  free(aux);
+
+  aux = copia_vetor(vetC, qtd);
+  tmp = selection_sort(aux, qtd, mov, comp);
   printf("\nMetodo Selection Sort\n");
   printf("\t\tTEMPO DE EXECUÇÃO: %f\n\t\tNUMEROS DE COMPARACOES FEITAS: %d\n\t\tNUMEROS DE MOVIMENTAÇÕES FEITAS %d\n\n", tmp, *comp, *mov);
   free(aux);

@@ -17,4 +17,5 @@ double quick_sort(int *a, int left, int right, int *mov, int *comp);
 
 
 
+
 #endif

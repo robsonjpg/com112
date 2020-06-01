@@ -1,6 +1,3 @@
-// Autor : Paulo Antonio Cerávolo Rodrigues
-// Abril de 2020
-
 // Exercício 1
 // Faça um programa que armazene em um vetor V um conjunto de 10 números inteiros.
 // Utilize o algoritmo de ordenação Bubble Sort para ordenar um conjunto de números

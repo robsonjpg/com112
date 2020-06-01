@@ -4,7 +4,6 @@
 #include <math.h>
 #include "com112_sort.h"
 
-//-------------------------------------------------------------------------------------------------------------------------------------------
 double bubble_sort(int *dados, int qtd, int *mov, int *comp){
 	clock_t start = clock();
   int i, j, aux;
@@ -25,10 +24,8 @@ double bubble_sort(int *dados, int qtd, int *mov, int *comp){
   double tmp = ((double) (end - start)) / CLOCKS_PER_SEC;
 	return tmp;
 }
-//-------------------------------------------------------------------------------------------------------------------------------------------
 
 
-//-------------------------------------------------------------------------------------------------------------------------------------------
 double selection_sort(int *dados, int qtd, int *mov, int *comp){
   clock_t start = clock();
   int i, j, min_marc, aux;
@@ -52,10 +49,8 @@ double selection_sort(int *dados, int qtd, int *mov, int *comp){
   double tmp = ((double) (end - start)) / CLOCKS_PER_SEC;
   return tmp;
 }
-//-------------------------------------------------------------------------------------------------------------------------------------------
 
 
-//-------------------------------------------------------------------------------------------------------------------------------------------
 double insertion_sort(int *dados, int qtd, int *mov, int *comp){
   clock_t start = clock();
   int j, i, aux;
@@ -65,9 +60,9 @@ double insertion_sort(int *dados, int qtd, int *mov, int *comp){
     aux = dados[i];
     j = i - 1;
     while(j >= 0 && (aux < dados[j])){
-      (*mov)++;
       dados[j+1] = dados[j];
       j = j - 1;
+      (*mov)++;
     }
     dados[j+1] = aux;
   }
@@ -75,10 +70,7 @@ double insertion_sort(int *dados, int qtd, int *mov, int *comp){
   double tmp = ((double) (end - start)) / CLOCKS_PER_SEC;
   return tmp;
 }
-//-------------------------------------------------------------------------------------------------------------------------------------------
 
-
-//-------------------------------------------------------------------------------------------------------------------------------------------
 void merge(int *dados, int ini, int meio, int fim, int *mov, int *comp){
 	int *temp, p1, p2, tam, i, j, k;
 	int fim1=0, fim2=0;
@@ -88,14 +80,19 @@ void merge(int *dados, int ini, int meio, int fim, int *mov, int *comp){
 	temp = (int *) malloc(tam*sizeof(int));
 	if(temp != NULL){
 		for(i=0; i<tam; i++){
+			
 			if(!fim1 && !fim2){
-        (*comp)++;
+
+        (*comp)++; // a comparação deve ser incrementada logo antes desse if que compara elementos do vetor
+
 				if(dados[p1] < dados[p2]){
 					temp[i] = dados[p1++];
+          
 					(*mov)++;
 				}
 				else
 					temp[i] = dados[p2++];
+
 				if(p1>meio) fim1=1;
 				if(p2>fim) fim2=1;
 			}else{
@@ -116,20 +113,14 @@ void merge(int *dados, int ini, int meio, int fim, int *mov, int *comp){
 	free(temp);
 	return;
 }
-//-------------------------------------------------------------------------------------------------------------------------------------------
 
-
-//-------------------------------------------------------------------------------------------------------------------------------------------
 void print_test(int *dados, int ini, int fim)
 {
   for (int i = ini; i <= fim; i++)
     printf("%d ", dados[i]);
   printf("\n");
 }
-//-------------------------------------------------------------------------------------------------------------------------------------------
 
-
-//-------------------------------------------------------------------------------------------------------------------------------------------
 void merge_ascencio(int *dados, int ini, int meio, int fim, int *mov, int *comp){
   int poslivre, inicio_vetor1, inicio_vetor2, i, tam;
   int *aux;
@@ -173,16 +164,14 @@ void merge_ascencio(int *dados, int ini, int meio, int fim, int *mov, int *comp)
   for(i=ini; i<=fim; i++){
     dados[i] = aux[j];
     j++;
+    //(*mov)++;
   }
 
   free(aux);
 
   return;
 }
-//-------------------------------------------------------------------------------------------------------------------------------------------
 
-
-//-------------------------------------------------------------------------------------------------------------------------------------------
 double merge_sort(int *dados, int qtd, int ini, int fim, int *mov, int *comp){
   clock_t start = clock();
   
@@ -191,6 +180,7 @@ double merge_sort(int *dados, int qtd, int ini, int fim, int *mov, int *comp){
 		meio = floor((ini+fim)/2);
 		merge_sort(dados, qtd, ini, meio, mov, comp);
 		merge_sort(dados, qtd, meio+1, fim, mov, comp);
+		//merge(dados, ini, meio, fim, mov, comp);
     merge_ascencio(dados, ini, meio, fim, mov, comp);
 	}
 
@@ -199,46 +189,24 @@ double merge_sort(int *dados, int qtd, int ini, int fim, int *mov, int *comp){
 
   return tmp;
 }
-//-------------------------------------------------------------------------------------------------------------------------------------------
 
-
-//-------------------------------------------------------------------------------------------------------------------------------------------
-double quick_sort(int *a, int left, int right, int *mov, int *comp) {
-    clock_t start = clock();
-    int i, j, x, y;
-    
-    i = left;
-    j = right;
-    x = a[(left + right) / 2];
-    
-    while(i <= j) {
-        while(a[i] < x && i < right) {
-            (*comp)++;
-            i++;
-        }
-        while(a[j] > x && j > left) {
-            (*comp)++;
-            j--;
-        }
-        if(i <= j) {
-            y = a[i];
-            a[i] = a[j];
-            (*mov)++;
-            a[j] = y;
-            (*mov)++;
-            i++;
-            j--;
-        }
-    }
-    
-    if(j > left) {
-        quick_sort(a, left, j, mov, comp);
-    }
-    if(i < right) {
-        quick_sort(a, i, right, mov, comp);
-    }
-    clock_t end = clock();
-    double tmp = ((double) (end - start)) / CLOCKS_PER_SEC;
-	  return tmp;
-}
-//-------------------------------------------------------------------------------------------------------------------------------------------
+/*
+	BUBBLE SORT
+		COMP:	99.990.000		V
+		MOV:	24.483.985		V
+		
+	INSERTION SORT
+		COMP:	95.937.072		X
+		MOV:	24.492.812		V
+		
+	SELECTION SORT
+		COMP:	25.112.811
+		MOV:	25.122.810
+		
+		COMP:	49.995.000		V
+		MOV:		19.988		V
+		
+	MERGE SORT
+		COMP:		96.860		X
+		MOV: 	   133.616		X
+*/
