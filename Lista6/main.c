@@ -97,13 +97,13 @@ int menu(int *dados, int *vetC, int *vetorD, int qtd, int *mov, int *comp, int *
         printf("\n\nORDEM ALEATÓRIA\n");
         tmp = selection_sort(dados, qtd, mov, comp);
         relatorio(*mov, *comp, tmp);
+        escreve_dado(dados, qtd, 1);
         printf("\n\nORDEM CRESCENTE\n");
         tmpC = selection_sort(vetC, qtd, movC, compC);
         relatorio(*movC, *compC, tmpC);
         printf("\n\nORDEM DECRESCENTE\n");
         tmpD = selection_sort(vetorD, qtd, moveD, compaD);
-        relatorio(*moveD, *compaD, tmpD);
-        escreve_dado(dados, qtd, 1); 
+        relatorio(*moveD, *compaD, tmpD); 
         printf("\n\nORDENADOS COM SUCESSO\n\n");
       break;
 
