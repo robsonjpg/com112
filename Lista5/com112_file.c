@@ -44,8 +44,7 @@ void escreve_dado(int *dados, int qtd, int aux){
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------
-void escreve_relatorio(int *dados, int qtd, int *mov, int *comp){
-  //NO RELATÓRIO O BUBBLE SORT E INSERTION SORT ESTÃO SAINDO COM AS MOVIMENTAÇÕES ERRADAS, CONCERTO EM ANÁLISE!!!  
+void escreve_relatorio(int *dados, int qtd, int *mov, int *comp){  
   FILE *file;
   float tmp;
   int *aux;
@@ -93,22 +92,9 @@ void escreve_relatorio(int *dados, int qtd, int *mov, int *comp){
   printf("\nMetodo Merge Sort\n");
   printf("\t\tTEMPO DE EXECUÇÃO: %f\n\t\tNUMEROS DE COMPARACOES FEITAS: %d\n\t\tNUMEROS DE MOVIMENTAÇÕES FEITAS %d\n\n", tmp, *comp, *mov);
   free(aux);
-//-------------------------------------------------------------------------------------------------------------------------------------------
-  aux = copia_vetor(dados, qtd);
-  tmp = quick_sort(dados, 0, qtd-1, mov, comp);
-  file = fopen("com112_relatorio.txt", "a");
-  fprintf(file, "\nMetodo Quick Sort\n");
-  fprintf(file, "\t\tTEMPO DE EXECUÇÃO: %f\n\t\tNUMEROS DE COMPARACOES FEITAS: %d\n\t\tNUMEROS DE MOVIMENTAÇÕES FEITAS %d", tmp, *comp, *mov);
-  fprintf(file, "\n\n");
-  fclose(file);
-  printf("\nMetodo Quick Sort\n");
-  printf("\t\tTEMPO DE EXECUÇÃO: %f\n\t\tNUMEROS DE COMPARACOES FEITAS: %d\n\t\tNUMEROS DE MOVIMENTAÇÕES FEITAS %d\n\n", tmp, *comp, *mov);
-  free(aux);
-//-------------------------------------------------------------------------------------------------------------------------------------------
-    return;
+  return;
   }
 //-------------------------------------------------------------------------------------------------------------------------------------------
-
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------

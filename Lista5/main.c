@@ -42,9 +42,8 @@ int menu(int *dados, int qtd, int *mov, int *comp){
     printf("\n2) Selection Sort");
     printf("\n3) Insertion Sort");
     printf("\n4) Merge Sort");
-    printf("\n5) Quick Sort");
-    printf("\n6) Tirar o Relatorio");
-    printf("\n7) Sair\n\n");
+    printf("\n5) Tirar o Relatorio");
+    printf("\n6) Sair\n\n");
     scanf("%d", &aux);
 
     switch(aux){
@@ -65,7 +64,7 @@ int menu(int *dados, int qtd, int *mov, int *comp){
       break;
 
       case 3:
-        printf("\n\nORDENANDO POR INSERTION SORT"); //SEMPRE TESTE ESSE PRIMEIRO PARA SAIR O RESULTADO CERTO
+        printf("\n\nORDENANDO POR INSERTION SORT");
         tmp = insertion_sort(dados, qtd, mov, comp);
         escreve_dado(dados, qtd, 1);
         relatorio(*mov, *comp, tmp);
@@ -82,26 +81,17 @@ int menu(int *dados, int qtd, int *mov, int *comp){
       break;
 
       case 5:
-        printf("\n\nORDENANDO POR QUICK SORT");
-        *mov = 0; *comp = 0;
-        tmp = quick_sort(dados, 0, qtd-1, mov, comp);
-        escreve_dado(dados, qtd, 1);
-        relatorio(*mov, *comp, tmp);
-        printf("\n\nORDENADOS COM SUCESSO\n\n");
-      break;
-
-      case 6:
         printf("\n\nGERANDO RELATÓRIO\n");
         escreve_relatorio(dados, qtd, mov, comp);
         escreve_dado(dados, qtd, 1);
         printf("\nSUCESSO AO GERAR ^^\n");
       break;
 
-      case 7:
+      case 6:
         printf("\nFINALIZANDO O PROGRAMA :'(");
       exit(0);
     }
-  }while(aux!=7);
+  }while(aux!=6);
   return 1;
 }
 //-------------------------------------------------------------------------------------------------------------------------------------------

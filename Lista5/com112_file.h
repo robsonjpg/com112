@@ -6,15 +6,4 @@ void le_dado(int aux);
 void escreve_dado(int *dados, int qtd, int aux);
 void escreve_relatorio(int *dados, int qtd, int *mov, int *comp);
 
-
-
-
-
-
-
-
-
-
-
-
 #endif

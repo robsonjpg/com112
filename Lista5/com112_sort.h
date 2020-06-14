@@ -7,14 +7,5 @@ void merge_ascencio(int *dados, int ini, int meio, int fim, int *mov, int *comp)
 double bubble_sort(int *dados, int qtd, int *mov, int *comp);
 double selection_sort(int *dados, int qtd, int *mov, int *comp);
 double insertion_sort(int *dados, int qtd, int *mov, int *comp);
-double quick_sort(int *a, int left, int right, int *mov, int *comp);
-
-
-
-
-
-
-
-
 
 #endif

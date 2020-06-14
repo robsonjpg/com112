@@ -65,9 +65,9 @@ double insertion_sort(int *dados, int qtd, int *mov, int *comp){
     aux = dados[i];
     j = i - 1;
     while(j >= 0 && (aux < dados[j])){
-      (*mov)++;
       dados[j+1] = dados[j];
       j = j - 1;
+      (*mov)++;
     }
     dados[j+1] = aux;
   }
@@ -198,47 +198,5 @@ double merge_sort(int *dados, int qtd, int ini, int fim, int *mov, int *comp){
   double tmp = ((double) (end - start)) / CLOCKS_PER_SEC;
 
   return tmp;
-}
-//-------------------------------------------------------------------------------------------------------------------------------------------
-
-
-//-------------------------------------------------------------------------------------------------------------------------------------------
-double quick_sort(int *a, int left, int right, int *mov, int *comp) {
-    clock_t start = clock();
-    int i, j, x, y;
-    
-    i = left;
-    j = right;
-    x = a[(left + right) / 2];
-    
-    while(i <= j) {
-        while(a[i] < x && i < right) {
-            (*comp)++;
-            i++;
-        }
-        while(a[j] > x && j > left) {
-            (*comp)++;
-            j--;
-        }
-        if(i <= j) {
-            y = a[i];
-            a[i] = a[j];
-            (*mov)++;
-            a[j] = y;
-            (*mov)++;
-            i++;
-            j--;
-        }
-    }
-    
-    if(j > left) {
-        quick_sort(a, left, j, mov, comp);
-    }
-    if(i < right) {
-        quick_sort(a, i, right, mov, comp);
-    }
-    clock_t end = clock();
-    double tmp = ((double) (end - start)) / CLOCKS_PER_SEC;
-	  return tmp;
 }
 //-------------------------------------------------------------------------------------------------------------------------------------------
